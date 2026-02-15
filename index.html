@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yashraj Jadhav - Data Scientist &amp; ML Engineer</title>
+<meta name="description" content="Data Scientist with 2+ years in ML pipelines, causal inference, and LLM applications. MS Business Analytics at USC Marshall. Open to full-time roles May 2026.">
+<meta property="og:title" content="Yashraj Jadhav - Data Scientist &amp; ML Engineer">
+<meta property="og:description" content="Building intelligent systems with data &amp; ML. Projects in LLM agents, RAG systems, causal inference, and healthcare ML.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yashraj10.github.io">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yashraj Jadhav - Data Scientist &amp; ML Engineer">
+<meta name="twitter:description" content="Building intelligent systems with data &amp; ML. Open to full-time roles May 2026.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9889;</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -29,6 +38,7 @@
     pointer-events: none; z-index: 9999;
   }
 
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center;
@@ -42,6 +52,7 @@
   .nav-links a:hover { color: var(--accent); }
   .nav-links a:hover::after { width: 100%; }
 
+  /* HERO */
   .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 3rem 4rem; position: relative; overflow: hidden; }
   .hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; filter: blur(150px); opacity: 0.12; pointer-events: none; }
   .hero-glow-1 { top: -100px; right: -100px; background: var(--gradient-1); }
@@ -64,6 +75,8 @@
   .btn-primary:hover { background: #d4ff59; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,245,73,0.25); }
   .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .btn-resume { background: transparent; color: var(--text); border: 1px solid var(--accent); }
+  .btn-resume:hover { background: rgba(196,245,73,0.1); transform: translateY(-2px); }
 
   .hero-photo-wrap { flex-shrink: 0; position: relative; animation: fadeInUp 0.8s ease-out 0.5s both; }
   .hero-photo { width: 300px; height: 360px; object-fit: cover; object-position: center top; border-radius: 20px; border: 2px solid var(--border); display: block; filter: grayscale(20%); transition: all 0.5s; }
@@ -74,12 +87,15 @@
   .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); animation: fadeInUp 0.8s ease-out 0.6s both; }
   .stat-number { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--accent); }
   .stat-label { font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
+  .stat-context { font-size: 0.65rem; color: #666; margin-top: 0.15rem; font-family: 'JetBrains Mono', monospace; }
 
+  /* SECTIONS */
   section { padding: 6rem 3rem; }
   .section-header { margin-bottom: 4rem; }
   .section-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace; }
   .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem,4vw,3rem); letter-spacing: -0.02em; line-height: 1.1; }
 
+  /* PROJECTS */
   .projects-grid { display: grid; gap: 2rem; }
   .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; transition: all 0.4s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; }
   .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(196,245,73,0.03), transparent); opacity: 0; transition: opacity 0.4s; }
@@ -88,11 +104,20 @@
   .project-info { display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
   .project-number { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 1rem; }
   .project-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.2; }
-  .project-desc { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; font-weight: 300; }
+
+  .project-meta { margin-bottom: 1.5rem; }
+  .project-meta-row { display: flex; gap: 0.4rem; margin-bottom: 0.45rem; font-size: 0.88rem; line-height: 1.5; }
+  .project-meta-label { color: var(--accent-dim); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 500; min-width: 72px; padding-top: 2px; }
+  .project-meta-value { color: var(--text-dim); font-weight: 300; }
+
   .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
   .tag { padding: 0.3rem 0.75rem; background: rgba(196,245,73,0.08); border: 1px solid rgba(196,245,73,0.15); border-radius: 100px; font-size: 0.72rem; color: var(--accent-dim); font-family: 'JetBrains Mono', monospace; }
+  .project-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
   .project-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: gap 0.3s; }
   .project-link:hover { gap: 0.8rem; }
+  .project-link-secondary { color: var(--text-dim); }
+  .project-link-secondary:hover { color: var(--accent); }
+
   .project-visual { background: var(--bg-elevated); border-radius: 14px; border: 1px solid var(--border); padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; min-height: 280px; overflow: hidden; }
   .project-visual pre { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; line-height: 1.7; color: var(--text-dim); white-space: pre; overflow: hidden; }
   .project-visual pre .kw { color: var(--accent); }
@@ -104,6 +129,7 @@
   .arch-diagram .box.highlight { border-color: var(--accent); color: var(--accent); background: rgba(196,245,73,0.08); }
   .arch-diagram .arrow { color: var(--accent); font-size: 0.9rem; display: block; margin: 0.15rem 0; }
 
+  /* EXPERIENCE */
   #experience { background: var(--bg-elevated); }
   .timeline { max-width: 800px; position: relative; }
   .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--accent), var(--border)); }
@@ -116,6 +142,7 @@
   .timeline-highlights li { color: var(--text-dim); font-size: 0.88rem; line-height: 1.6; font-weight: 300; padding-left: 1.2rem; position: relative; }
   .timeline-highlights li::before { content: '\2192'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
 
+  /* SKILLS */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
   .skill-group { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s; }
   .skill-group:hover { border-color: rgba(196,245,73,0.2); transform: translateY(-2px); }
@@ -125,6 +152,7 @@
   .skill-pill { padding: 0.3rem 0.7rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; font-size: 0.78rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
   .skill-pill:hover { border-color: var(--accent); color: var(--accent); background: rgba(196,245,73,0.05); }
 
+  /* EDUCATION */
   #education { background: var(--bg-elevated); }
   .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .edu-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; }
@@ -132,6 +160,7 @@
   .edu-school { color: var(--accent); font-size: 0.85rem; margin-bottom: 0.3rem; font-weight: 500; }
   .edu-detail { color: var(--text-dim); font-size: 0.82rem; font-weight: 300; }
 
+  /* CONTACT */
   .contact-inner { text-align: center; max-width: 600px; margin: 0 auto; }
   .contact-desc { color: var(--text-dim); font-size: 1rem; margin-bottom: 2.5rem; font-weight: 300; }
   .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
@@ -142,8 +171,9 @@
   .footer-text { color: var(--text-dim); font-size: 0.78rem; font-weight: 300; }
   .footer-text span { color: var(--accent); }
 
+  /* MARQUEE */
   .marquee-wrap { overflow: hidden; padding: 1.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-elevated); }
-  .marquee { display: flex; gap: 3rem; animation: marquee 30s linear infinite; width: max-content; }
+  .marquee { display: flex; gap: 3rem; animation: marquee 40s linear infinite; width: max-content; }
   .marquee-item { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--text-dim); white-space: nowrap; opacity: 0.4; }
   .marquee-item .sep { color: var(--accent); margin: 0 0.5rem; }
 
@@ -153,6 +183,9 @@
 
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.4,0,0.2,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* FOCUS STATES */
+  a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
@@ -195,13 +228,30 @@
       <p class="hero-desc">Data Scientist with 2+ years of experience in ML pipelines, causal inference, and LLM applications. Currently pursuing MS in Business Analytics at USC Marshall.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">View Projects &#8595;</a>
+        <a href="resume.pdf" target="_blank" class="btn btn-resume">Download Resume &#8599;</a>
         <a href="https://www.linkedin.com/in/yashrajjadhav/" target="_blank" class="btn btn-outline">LinkedIn &#8594;</a>
       </div>
       <div class="hero-stats">
-        <div><div class="stat-number">2+</div><div class="stat-label">Years Experience</div></div>
-        <div><div class="stat-number">500K+</div><div class="stat-label">Records Processed</div></div>
-        <div><div class="stat-number">18%</div><div class="stat-label">Readmission Reduction</div></div>
-        <div><div class="stat-number">1</div><div class="stat-label">IEEE Publication</div></div>
+        <div>
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Years Experience</div>
+          <div class="stat-context">Capgemini, Full-time</div>
+        </div>
+        <div>
+          <div class="stat-number">500K+</div>
+          <div class="stat-label">Records Processed</div>
+          <div class="stat-context">Patient record pipelines</div>
+        </div>
+        <div>
+          <div class="stat-number">18%</div>
+          <div class="stat-label">Readmission Reduction</div>
+          <div class="stat-context">XGBoost, 3 departments</div>
+        </div>
+        <div>
+          <div class="stat-number">1</div>
+          <div class="stat-label">IEEE Publication</div>
+          <div class="stat-context">ICCUBEA Conference</div>
+        </div>
       </div>
     </div>
     <div class="hero-photo-wrap">
@@ -212,27 +262,45 @@
 
 <div class="marquee-wrap">
   <div class="marquee">
-    <span class="marquee-item">Python <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> Clustering <span class="sep">&middot;</span> ETL Pipelines</span>
-    <span class="marquee-item">Python <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> Clustering <span class="sep">&middot;</span> ETL Pipelines</span>
+    <span class="marquee-item">Python <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> ETL Pipelines <span class="sep">&middot;</span> Hypothesis Testing <span class="sep">&middot;</span> Streamlit <span class="sep">&middot;</span> Feature Engineering <span class="sep">&middot;</span> Clustering</span>
+    <span class="marquee-item" aria-hidden="true">Python <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> ETL Pipelines <span class="sep">&middot;</span> Hypothesis Testing <span class="sep">&middot;</span> Streamlit <span class="sep">&middot;</span> Feature Engineering <span class="sep">&middot;</span> Clustering</span>
   </div>
 </div>
 
+<!-- PROJECTS -->
 <section id="projects">
   <div class="section-header reveal">
     <div class="section-label">// Selected Work</div>
     <h2 class="section-title">Projects</h2>
   </div>
   <div class="projects-grid">
+
+    <!-- PROJECT 01: AI Repo Co-Pilot -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">01 &mdash; AI AGENT</div>
         <h3 class="project-title">AI Repo Co-Pilot</h3>
-        <p class="project-desc">An AI-powered code analysis agent built with LangGraph. Point it at any codebase, ask a question in plain English, and get structured answers with exact file names and line numbers &mdash; zero hallucinations guaranteed through a 5-step verification pipeline.</p>
+        <div class="project-meta">
+          <div class="project-meta-row">
+            <span class="project-meta-label">Problem</span>
+            <span class="project-meta-value">Understanding unfamiliar codebases is slow and error-prone; LLMs hallucinate file paths and line numbers.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Approach</span>
+            <span class="project-meta-value">5-step LangGraph agent: plan, read, analyze, summarize, verify. Citations are schema-validated and retried on failure.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Result</span>
+            <span class="project-meta-value">33/33 eval tests pass including adversarial cases. Supports 40+ languages across any local or cloned repo.</span>
+          </div>
+        </div>
         <div class="project-tags"><span class="tag">LangGraph</span><span class="tag">OpenAI</span><span class="tag">Python</span><span class="tag">AI Agent</span><span class="tag">40+ Languages</span></div>
-        <a href="https://github.com/yashraj10/ai-repo-copilot" target="_blank" class="project-link">View on GitHub &#8594;</a>
+        <div class="project-links">
+          <a href="https://github.com/yashraj10/ai-repo-copilot" target="_blank" class="project-link">GitHub &#8594;</a>
+        </div>
       </div>
       <div class="project-visual">
-        <pre><span class="cm"># 5-step AI pipeline</span>
+        <pre><span class="cm"># LangGraph agent with verification</span>
 
 <span class="kw">def</span> analyze(repo, question):
   plan    = <span class="str">planner</span>.understand(question)
@@ -241,22 +309,40 @@
   report  = <span class="str">summarizer</span>.generate(insight)
   result  = <span class="str">verifier</span>.validate(report)
 
-  <span class="cm"># retry loop if citations fail</span>
-  <span class="kw">while not</span> result.valid:
+  <span class="cm"># citations must include file_path</span>
+  <span class="cm"># + line_range or verifier rejects</span>
+  <span class="kw">while not</span> result.schema_valid:
     report = <span class="str">summarizer</span>.retry(result)
     result = <span class="str">verifier</span>.validate(report)
 
-  <span class="kw">return</span> result  <span class="cm"># 33/33 tests pass</span></pre>
+  <span class="kw">return</span> result
+<span class="cm"># eval: 33/33 (core + adversarial)</span></pre>
       </div>
     </div>
 
+    <!-- PROJECT 02: Retention RAG -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">02 &mdash; LLM SYSTEM</div>
         <h3 class="project-title">Retention Decision Twin</h3>
-        <p class="project-desc">A RAG-powered decision engine that acts as an AI "decision twin" for CRM managers. Uses Gemini + ChromaDB to retrieve relevant retention strategies from 15+ curated sources and generate structured, cited recommendations &mdash; evaluated across 4 configurations using an LLM-as-judge framework.</p>
+        <div class="project-meta">
+          <div class="project-meta-row">
+            <span class="project-meta-label">Problem</span>
+            <span class="project-meta-value">CRM teams lack a fast, evidence-based way to choose retention actions for different user cohorts.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Approach</span>
+            <span class="project-meta-value">RAG pipeline: 15+ sources chunked and embedded into ChromaDB, retrieved via cosine HNSW, generated by Gemini 2.0 Flash with structured prompts.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Result</span>
+            <span class="project-meta-value">4-config A/B evaluation (RAG vs No-RAG &times; Prompt v1 vs v2) scored by LLM-as-judge across 15 scenarios on relevance, faithfulness, citation quality, and actionability.</span>
+          </div>
+        </div>
         <div class="project-tags"><span class="tag">Gemini</span><span class="tag">ChromaDB</span><span class="tag">RAG</span><span class="tag">LLM-as-Judge</span><span class="tag">Streamlit</span></div>
-        <a href="https://github.com/yashraj10/retention-rag" target="_blank" class="project-link">View on GitHub &#8594;</a>
+        <div class="project-links">
+          <a href="https://github.com/yashraj10/retention-rag" target="_blank" class="project-link">GitHub &#8594;</a>
+        </div>
       </div>
       <div class="project-visual">
         <div class="arch-diagram">
@@ -271,19 +357,30 @@
       </div>
     </div>
 
+    <!-- PROJECT 03: Churn Timing -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">03 &mdash; CAUSAL ML</div>
         <h3 class="project-title">Churn Timing &amp; Notification Impact</h3>
-        <p class="project-desc">Built a churn timing model using drift-based behavioral features and XGBoost to identify early disengagement signals. Designed a randomized treatment-control framework measuring causal impact of lifecycle notifications &mdash; observing ~225% lift in 7-day sessions for responsive cohorts.</p>
+        <div class="project-meta">
+          <div class="project-meta-row">
+            <span class="project-meta-label">Problem</span>
+            <span class="project-meta-value">Long-tenured users churn silently; raw activity counts miss early disengagement signals.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Approach</span>
+            <span class="project-meta-value">XGBoost churn model with drift-based features. Randomized treatment-control framework to measure causal notification impact. Uplift-based user segmentation.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Result</span>
+            <span class="project-meta-value">~225% lift in 7-day post-notification sessions for responsive cohorts. Identified high-response personas for targeted retention.</span>
+          </div>
+        </div>
         <div class="project-tags"><span class="tag">XGBoost</span><span class="tag">Causal Inference</span><span class="tag">A/B Testing</span><span class="tag">Clustering</span><span class="tag">Uplift Analysis</span></div>
       </div>
       <div class="project-visual">
-        <pre><span class="cm"># Key Results</span>
+        <pre><span class="cm"># Churn timing + causal framework</span>
 
-treatment_lift = <span class="num">225%</span>  <span class="cm"># 7-day sessions</span>
-
-<span class="cm"># Approach</span>
 features = [
   <span class="str">"session_drift_7d"</span>,
   <span class="str">"engagement_decay_rate"</span>,
@@ -296,42 +393,69 @@ model = <span class="kw">XGBClassifier</span>(
   eval_metric=<span class="str">"auc"</span>
 )
 
-<span class="cm"># Segmented by uplift score</span>
-<span class="cm"># targeted retention strategy</span></pre>
+<span class="cm"># Treatment-control evaluation</span>
+lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</span>
+<span class="cm"># Segmented by uplift score into</span>
+<span class="cm"># high / medium / low responders</span>
+<span class="cm"># &rarr; targeted retention actions</span></pre>
       </div>
     </div>
 
+    <!-- PROJECT 04: ICU Census — tightened -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">04 &mdash; HEALTHCARE ML</div>
         <h3 class="project-title">ICU Census Prediction</h3>
-        <p class="project-desc">Predictive model for ICU bed occupancy forecasting, enabling hospitals to optimize resource allocation and staffing. Part of broader healthcare ML work applying machine learning to improve clinical operations and patient outcomes.</p>
-        <div class="project-tags"><span class="tag">Python</span><span class="tag">Forecasting</span><span class="tag">Healthcare</span><span class="tag">ML Pipeline</span></div>
-        <a href="https://github.com/yashraj10/ICU-Census-Prediction" target="_blank" class="project-link">View on GitHub &#8594;</a>
+        <div class="project-meta">
+          <div class="project-meta-row">
+            <span class="project-meta-label">Problem</span>
+            <span class="project-meta-value">Hospitals over- or under-staff ICUs because they lack reliable short-term bed occupancy forecasts.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Approach</span>
+            <span class="project-meta-value">Time-series forecasting pipeline with admission rate, discharge patterns, acuity scores, and seasonal features. 24-hour rolling prediction horizon.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Result</span>
+            <span class="project-meta-value">Enables proactive staffing adjustments and bed allocation, reducing both over-capacity risk and idle resources.</span>
+          </div>
+        </div>
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">Time Series</span><span class="tag">Healthcare</span><span class="tag">Forecasting</span><span class="tag">ML Pipeline</span></div>
+        <div class="project-links">
+          <a href="https://github.com/yashraj10/ICU-Census-Prediction" target="_blank" class="project-link">GitHub &#8594;</a>
+        </div>
       </div>
       <div class="project-visual">
-        <pre><span class="cm"># Healthcare ML Pipeline</span>
+        <pre><span class="cm"># ICU census forecasting pipeline</span>
 
 <span class="kw">class</span> ICUPredictor:
   <span class="kw">def</span> __init__(self):
     self.features = [
-      <span class="str">"admission_rate"</span>,
-      <span class="str">"discharge_forecast"</span>,
-      <span class="str">"acuity_score"</span>,
-      <span class="str">"seasonal_pattern"</span>,
+      <span class="str">"admission_rate_24h"</span>,
+      <span class="str">"scheduled_discharges"</span>,
+      <span class="str">"avg_acuity_score"</span>,
+      <span class="str">"day_of_week"</span>,
+      <span class="str">"seasonal_index"</span>,
     ]
+    self.horizon = <span class="num">24</span>  <span class="cm"># hours</span>
 
-  <span class="kw">def</span> predict(self, horizon=<span class="num">24</span>):
-    <span class="cm"># forecast next 24h census</span>
-    <span class="kw">return</span> self.model.forecast(
-      steps=horizon,
-      features=self.features
-    )</pre>
+  <span class="kw">def</span> predict(self, current_census):
+    features = self.extract(current_census)
+    forecast = self.model.predict(
+      features, steps=self.horizon
+    )
+    <span class="kw">return</span> {
+      <span class="str">"predicted_census"</span>: forecast,
+      <span class="str">"staff_recommendation"</span>: 
+        self.staffing_model(forecast)
+    }</pre>
       </div>
     </div>
+
   </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-header reveal">
     <div class="section-label">// Career</div>
@@ -344,7 +468,7 @@ model = <span class="kw">XGBClassifier</span>(
       <div class="timeline-company">Capgemini Technology Services &middot; Pune, India</div>
       <ul class="timeline-highlights">
         <li>Led ML analysis on pharmaceutical trial data, applying subgroup analysis and causal inference to support $4.2M clinical go/no-go decisions</li>
-        <li>Built production scikit-learn pipelines (Random Forest, XGBoost) on 500K+ patient records, reducing readmissions by 18%</li>
+        <li>Built production scikit-learn pipelines (Random Forest, XGBoost) on 500K+ patient records, reducing readmissions by 18% across three departments</li>
         <li>Translated ML outputs into Power BI dashboards spanning 1.2M+ records, cutting operational costs by 15%</li>
         <li>Performed large-scale clustering on 2.5TB healthcare data, reducing misdiagnosis rates by 23%</li>
         <li>Optimized SQL ingestion pipelines processing 50K+ daily records, improving latency by 35%</li>
@@ -361,6 +485,7 @@ model = <span class="kw">XGBClassifier</span>(
   </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
   <div class="section-header reveal">
     <div class="section-label">// Toolkit</div>
@@ -390,6 +515,7 @@ model = <span class="kw">XGBClassifier</span>(
   </div>
 </section>
 
+<!-- EDUCATION -->
 <section id="education">
   <div class="section-header reveal">
     <div class="section-label">// Education</div>
@@ -411,6 +537,7 @@ model = <span class="kw">XGBClassifier</span>(
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner reveal">
     <div class="section-label">// Get in Touch</div>
@@ -420,7 +547,6 @@ model = <span class="kw">XGBClassifier</span>(
       <a href="mailto:yjadhav@marshall.usc.edu" class="contact-link">&#9993; yjadhav@marshall.usc.edu</a>
       <a href="https://www.linkedin.com/in/yashrajjadhav/" target="_blank" class="contact-link">&#10230; LinkedIn</a>
       <a href="https://github.com/yashraj10" target="_blank" class="contact-link">&#10230; GitHub</a>
-      <a href="tel:+12138291259" class="contact-link">&#9742; (213) 829-1259</a>
     </div>
   </div>
 </section>
