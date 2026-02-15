@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yashraj Jadhav — Data Scientist & ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --bg-elevated: #111114;
+    --bg-card: #16161a;
+    --text: #e8e6e3;
+    --text-dim: #8a8a8e;
+    --accent: #c4f549;
+    --accent-dim: #a3cc3d;
+    --border: #2a2a2e;
+    --gradient-1: #c4f549;
+    --gradient-2: #49f5c4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg);
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* ===== NOISE OVERLAY ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(10, 10, 12, 0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  .hero-glow-1 {
+    top: -100px;
+    right: -100px;
+    background: var(--gradient-1);
+  }
+
+  .hero-glow-2 {
+    bottom: -200px;
+    left: -100px;
+    background: var(--gradient-2);
+    opacity: 0.06;
+  }
+
+  .hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+    animation: fadeInUp 0.8s ease-out both;
+  }
+
+  .hero-tag .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease-out 0.15s both;
+  }
+
+  .hero h1 .accent {
+    background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    max-width: 580px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease-out 0.45s both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.8rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .btn-primary:hover {
+    background: #d4ff59;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(196, 245, 73, 0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+  }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.2rem;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 6rem 3rem;
+  }
+
+  .section-header {
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* ===== PROJECTS ===== */
+  #projects { background: var(--bg); }
+
+  .projects-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(196, 245, 73, 0.03), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .project-card:hover {
+    border-color: rgba(196, 245, 73, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .project-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag {
+    padding: 0.3rem 0.75rem;
+    background: rgba(196, 245, 73, 0.08);
+    border: 1px solid rgba(196, 245, 73, 0.15);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    color: var(--accent-dim);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.03em;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: gap 0.3s;
+  }
+
+  .project-link:hover { gap: 0.8rem; }
+
+  .project-visual {
+    background: var(--bg-elevated);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    min-height: 280px;
+    overflow: hidden;
+  }
+
+  .project-visual pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+    white-space: pre;
+    overflow: hidden;
+  }
+
+  .project-visual pre .kw { color: var(--accent); }
+  .project-visual pre .str { color: #49f5c4; }
+  .project-visual pre .cm { color: #555; }
+  .project-visual pre .num { color: #f5a849; }
+
+  .arch-diagram {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+    text-align: center;
+  }
+
+  .arch-diagram .box {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 0.3rem 0.2rem;
+    font-size: 0.68rem;
+    color: var(--text);
+    background: rgba(196, 245, 73, 0.04);
+  }
+
+  .arch-diagram .box.highlight {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(196, 245, 73, 0.08);
+  }
+
+  .arch-diagram .arrow {
+    color: var(--accent);
+    font-size: 0.9rem;
+    display: block;
+    margin: 0.15rem 0;
+  }
+
+  /* ===== EXPERIENCE ===== */
+  #experience { background: var(--bg-elevated); }
+
+  .timeline {
+    max-width: 800px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--border));
+  }
+
+  .timeline-item {
+    padding-left: 2.5rem;
+    padding-bottom: 3rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(196, 245, 73, 0.4);
+  }
+
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-company {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .timeline-highlights li {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    font-weight: 300;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .timeline-highlights li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  /* ===== SKILLS ===== */
+  #skills { background: var(--bg); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s;
+  }
+
+  .skill-group:hover {
+    border-color: rgba(196, 245, 73, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .skill-group-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(196, 245, 73, 0.1);
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .skill-group-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-pill {
+    padding: 0.3rem 0.7rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.2s;
+  }
+
+  .skill-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(196, 245, 73, 0.05);
+  }
+
+  /* ===== EDUCATION ===== */
+  #education { background: var(--bg-elevated); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .edu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .edu-degree {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .edu-school {
+    color: var(--accent);
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+  }
+
+  .edu-detail {
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    font-weight: 300;
+  }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--bg); }
+
+  .contact-inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-inner .section-title {
+    margin-bottom: 1rem;
+  }
+
+  .contact-desc {
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text {
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    font-weight: 300;
+  }
+
+  .footer-text span { color: var(--accent); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+
+    .project-card {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .project-visual { min-height: 200px; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+    .edu-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.4rem; }
+    .project-title { font-size: 1.4rem; }
+    footer { flex-direction: column; gap: 0.5rem; }
+  }
+
+  /* ===== MARQUEE ===== */
+  .marquee-wrap {
+    overflow: hidden;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+
+  .marquee {
+    display: flex;
+    gap: 3rem;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-item {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    opacity: 0.4;
+  }
+
+  .marquee-item .sep {
+    color: var(--accent);
+    margin: 0 0.5rem;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">yashraj<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Open to full-time opportunities · May 2026
+    </div>
+    <h1>Building intelligent<br>systems with <span class="accent">data & ML</span></h1>
+    <p class="hero-desc">
+      Data Scientist with 2+ years of experience in ML pipelines, causal inference, and LLM applications. Currently pursuing MS in Business Analytics at USC Marshall.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+      <a href="https://www.linkedin.com/in/yashrajjadhav/" target="_blank" class="btn btn-outline">LinkedIn →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-number">2+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-number">500K+</div>
+        <div class="stat-label">Records Processed</div>
+      </div>
+      <div>
+        <div class="stat-number">18%</div>
+        <div class="stat-label">Readmission Reduction</div>
+      </div>
+      <div>
+        <div class="stat-number">1</div>
+        <div class="stat-label">IEEE Publication</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span class="marquee-item">Python <span class="sep">·</span> XGBoost <span class="sep">·</span> LangGraph <span class="sep">·</span> RAG <span class="sep">·</span> Causal Inference <span class="sep">·</span> A/B Testing <span class="sep">·</span> SQL <span class="sep">·</span> Power BI <span class="sep">·</span> ChromaDB <span class="sep">·</span> Gemini <span class="sep">·</span> scikit-learn <span class="sep">·</span> Clustering <span class="sep">·</span> ETL Pipelines</span>
+    <span class="marquee-item">Python <span class="sep">·</span> XGBoost <span class="sep">·</span> LangGraph <span class="sep">·</span> RAG <span class="sep">·</span> Causal Inference <span class="sep">·</span> A/B Testing <span class="sep">·</span> SQL <span class="sep">·</span> Power BI <span class="sep">·</span> ChromaDB <span class="sep">·</span> Gemini <span class="sep">·</span> scikit-learn <span class="sep">·</span> Clustering <span class="sep">·</span> ETL Pipelines</span>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <div class="section-label">// Selected Work</div>
+    <h2 class="section-title">Projects</h2>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- Project 1: AI Repo Co-Pilot -->
+    <div class="project-card fade-in">
+      <div class="project-info">
+        <div class="project-number">01 — AI AGENT</div>
+        <h3 class="project-title">AI Repo Co-Pilot</h3>
+        <p class="project-desc">
+          An AI-powered code analysis agent built with LangGraph. Point it at any codebase, ask a question in plain English, and get structured answers with exact file names and line numbers — zero hallucinations guaranteed through a 5-step verification pipeline.
+        </p>
+        <div class="project-tags">
+          <span class="tag">LangGraph</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag">Python</span>
+          <span class="tag">AI Agent</span>
+          <span class="tag">40+ Languages</span>
+        </div>
+        <a href="https://github.com/yashraj10/ai-repo-copilot" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+      <div class="project-visual">
+        <pre><span class="cm"># 5-step AI pipeline</span>
+
+<span class="kw">def</span> analyze(repo, question):
+  plan    = <span class="str">planner</span>.understand(question)
+  files   = <span class="str">executor</span>.read_code(plan)
+  insight = <span class="str">analyzer</span>.extract(files)
+  report  = <span class="str">summarizer</span>.generate(insight)
+  result  = <span class="str">verifier</span>.validate(report)
+
+  <span class="cm"># retry loop if citations fail</span>
+  <span class="kw">while not</span> result.valid:
+    report = <span class="str">summarizer</span>.retry(result)
+    result = <span class="str">verifier</span>.validate(report)
+
+  <span class="kw">return</span> result  <span class="cm"># 33/33 tests pass</span></pre>
+      </div>
+    </div>
+
+    <!-- Project 2: Retention RAG -->
+    <div class="project-card fade-in">
+      <div class="project-info">
+        <div class="project-number">02 — LLM SYSTEM</div>
+        <h3 class="project-title">Retention Decision Twin</h3>
+        <p class="project-desc">
+          A RAG-powered decision engine that acts as an AI "decision twin" for CRM managers. Uses Gemini + ChromaDB to retrieve relevant retention strategies from 15+ curated sources and generate structured, cited recommendations — evaluated across 4 configurations using an LLM-as-judge framework.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Gemini</span>
+          <span class="tag">ChromaDB</span>
+          <span class="tag">RAG</span>
+          <span class="tag">LLM-as-Judge</span>
+          <span class="tag">Streamlit</span>
+        </div>
+        <a href="https://github.com/yashraj10/retention-rag" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+      <div class="project-visual">
+        <div class="arch-diagram">
+          <div class="box">15+ Sources</div>
+          <span class="arrow">↓</span>
+          <div class="box">Chunking · 1500 char</div>
+          <span class="arrow">↓</span>
+          <div class="box highlight">Gemini Embeddings · 768d</div>
+          <span class="arrow">↓</span>
+          <div class="box highlight">ChromaDB · HNSW Index</div>
+          <span class="arrow">↓</span>
+          <div class="box">Top-K Retrieval</div>
+          <span class="arrow">↓</span>
+          <div class="box highlight">Gemini 2.0 Flash</div>
+          <span class="arrow">↓</span>
+          <div class="box">Cited Recommendation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: Churn Prediction -->
+    <div class="project-card fade-in">
+      <div class="project-info">
+        <div class="project-number">03 — CAUSAL ML</div>
+        <h3 class="project-title">Churn Timing & Notification Impact</h3>
+        <p class="project-desc">
+          Built a churn timing model using drift-based behavioral features and XGBoost to identify early disengagement signals. Designed a randomized treatment-control framework measuring causal impact of lifecycle notifications — observing ~225% lift in 7-day sessions for responsive cohorts.
+        </p>
+        <div class="project-tags">
+          <span class="tag">XGBoost</span>
+          <span class="tag">Causal Inference</span>
+          <span class="tag">A/B Testing</span>
+          <span class="tag">Clustering</span>
+          <span class="tag">Uplift Analysis</span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <pre><span class="cm"># Key Results</span>
+
+treatment_lift = <span class="num">225%</span>  <span class="cm"># 7-day sessions</span>
+
+<span class="cm"># Approach</span>
+features = [
+  <span class="str">"session_drift_7d"</span>,
+  <span class="str">"engagement_decay_rate"</span>,
+  <span class="str">"feature_usage_entropy"</span>,
+  <span class="str">"days_since_peak_activity"</span>,
+]
+
+model = <span class="kw">XGBClassifier</span>(
+  objective=<span class="str">"binary:logistic"</span>,
+  eval_metric=<span class="str">"auc"</span>
+)
+
+<span class="cm"># Segmented by uplift score</span>
+<span class="cm"># → targeted retention strategy</span></pre>
+      </div>
+    </div>
+
+    <!-- Project 4: ICU Census -->
+    <div class="project-card fade-in">
+      <div class="project-info">
+        <div class="project-number">04 — HEALTHCARE ML</div>
+        <h3 class="project-title">ICU Census Prediction</h3>
+        <p class="project-desc">
+          Predictive model for ICU bed occupancy forecasting, enabling hospitals to optimize resource allocation and staffing. Part of broader healthcare ML work applying machine learning to improve clinical operations and patient outcomes.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Forecasting</span>
+          <span class="tag">Healthcare</span>
+          <span class="tag">ML Pipeline</span>
+        </div>
+        <a href="https://github.com/yashraj10/ICU-Census-Prediction" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+      <div class="project-visual">
+        <pre><span class="cm"># Healthcare ML Pipeline</span>
+
+<span class="kw">class</span> ICUPredictor:
+  <span class="kw">def</span> __init__(self):
+    self.features = [
+      <span class="str">"admission_rate"</span>,
+      <span class="str">"discharge_forecast"</span>,
+      <span class="str">"acuity_score"</span>,
+      <span class="str">"seasonal_pattern"</span>,
+    ]
+
+  <span class="kw">def</span> predict(self, horizon=<span class="num">24</span>):
+    <span class="cm"># forecast next 24h census</span>
+    <span class="kw">return</span> self.model.forecast(
+      steps=horizon,
+      features=self.features
+    )</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-in">
+    <div class="section-label">// Career</div>
+    <h2 class="section-title">Experience</h2>
+  </div>
+
+  <div class="timeline fade-in">
+    <div class="timeline-item">
+      <div class="timeline-date">JULY 2022 — AUGUST 2024</div>
+      <div class="timeline-role">Data Scientist</div>
+      <div class="timeline-company">Capgemini Technology Services · Pune, India</div>
+      <ul class="timeline-highlights">
+        <li>Led ML analysis on pharmaceutical trial data, applying subgroup analysis and causal inference to support $4.2M clinical go/no-go decisions</li>
+        <li>Built production scikit-learn pipelines (Random Forest, XGBoost) on 500K+ patient records, reducing readmissions by 18%</li>
+        <li>Translated ML outputs into Power BI dashboards spanning 1.2M+ records, cutting operational costs by 15%</li>
+        <li>Performed large-scale clustering on 2.5TB healthcare data, reducing misdiagnosis rates by 23%</li>
+        <li>Optimized SQL ingestion pipelines processing 50K+ daily records, improving latency by 35%</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">MARCH 2022 — JULY 2022</div>
+      <div class="timeline-role">Data Science Intern</div>
+      <div class="timeline-company">Capgemini Technology Services · Pune, India</div>
+      <ul class="timeline-highlights">
+        <li>Conducted exploratory and statistical analysis on 300K+ patient records, improving clinical protocols by 22%</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <div class="section-label">// Toolkit</div>
+    <h2 class="section-title">Skills & Tools</h2>
+  </div>
+
+  <div class="skills-grid fade-in">
+    <div class="skill-group">
+      <div class="skill-group-icon">⚡</div>
+      <div class="skill-group-title">Languages & Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">Hadoop</span>
+        <span class="skill-pill">Tableau</span>
+        <span class="skill-pill">Power BI</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-icon">🧠</div>
+      <div class="skill-group-title">ML & Modeling</div>
+      <div class="skill-pills">
+        <span class="skill-pill">XGBoost</span>
+        <span class="skill-pill">Random Forest</span>
+        <span class="skill-pill">Clustering</span>
+        <span class="skill-pill">Regression</span>
+        <span class="skill-pill">A/B Testing</span>
+        <span class="skill-pill">Hypothesis Testing</span>
+        <span class="skill-pill">Causal Inference</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-icon">🔧</div>
+      <div class="skill-group-title">Data & ML Systems</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Training Pipelines</span>
+        <span class="skill-pill">Batch Inference</span>
+        <span class="skill-pill">ETL Pipelines</span>
+        <span class="skill-pill">Feature Engineering</span>
+        <span class="skill-pill">Data Validation</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-icon">🤖</div>
+      <div class="skill-group-title">LLM & AI</div>
+      <div class="skill-pills">
+        <span class="skill-pill">LangGraph</span>
+        <span class="skill-pill">RAG</span>
+        <span class="skill-pill">Gemini</span>
+        <span class="skill-pill">ChromaDB</span>
+        <span class="skill-pill">Prompt Engineering</span>
+        <span class="skill-pill">LLM Evaluation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header fade-in">
+    <div class="section-label">// Education</div>
+    <h2 class="section-title">Academic Background</h2>
+  </div>
+
+  <div class="edu-grid fade-in">
+    <div class="edu-card">
+      <div class="edu-degree">MS in Business Analytics</div>
+      <div class="edu-school">USC Marshall School of Business</div>
+      <div class="edu-detail">STEM · Los Angeles, CA · May 2026</div>
+      <div class="edu-detail" style="margin-top: 0.5rem; color: var(--text-dim);">Machine Learning · LLMs · Statistics · Product Development</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">BE in Electronics & Telecom</div>
+      <div class="edu-school">Savitribai Phule Pune University</div>
+      <div class="edu-detail">Pimpri-Chinchwad College of Engineering · April 2022</div>
+      <div class="edu-detail" style="margin-top: 0.5rem; color: var(--text-dim);">IEEE Publication: ML-based Ration Dispensing System</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner fade-in">
+    <div class="section-label">// Get in Touch</div>
+    <h2 class="section-title" style="margin-bottom: 1rem;">Let's connect</h2>
+    <p class="contact-desc">Currently seeking full-time Data Science and ML roles starting May 2026. Always open to interesting conversations.</p>
+    <div class="contact-links">
+      <a href="mailto:yjadhav@marshall.usc.edu" class="contact-link">✉ yjadhav@marshall.usc.edu</a>
+      <a href="https://www.linkedin.com/in/yashrajjadhav/" target="_blank" class="contact-link">⟶ LinkedIn</a>
+      <a href="https://github.com/yashraj10" target="_blank" class="contact-link">⟶ GitHub</a>
+      <a href="tel:+12138291259" class="contact-link">✆ (213) 829-1259</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">© 2026 Yashraj Jadhav <span>·</span> Built with precision</div>
+  <div class="footer-text">Los Angeles, CA</div>
+</footer>
+
+<!-- SCROLL ANIMATION -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth scroll for nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
