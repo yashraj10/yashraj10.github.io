@@ -79,7 +79,7 @@
   .btn-resume:hover { background: rgba(196,245,73,0.1); transform: translateY(-2px); }
 
   .hero-photo-wrap { flex-shrink: 0; position: relative; animation: fadeInUp 0.8s ease-out 0.5s both; }
-  .hero-photo { width: 300px; height: 360px; object-fit: cover; object-position: center top; border-radius: 20px; border: 2px solid var(--border); display: block; filter: grayscale(20%); transition: all 0.5s; }
+  .hero-photo { width: 340px; height: 420px; object-fit: cover; object-position: center top; border-radius: 20px; border: 2px solid var(--border); display: block; filter: grayscale(20%); transition: all 0.5s; }
   .hero-photo:hover { filter: grayscale(0%); border-color: var(--accent); box-shadow: 0 20px 60px rgba(196,245,73,0.1); transform: translateY(-4px); }
   .hero-photo-wrap::before { content: ''; position: absolute; top: -8px; right: -8px; width: 100%; height: 100%; border: 1px solid var(--accent); border-radius: 20px; opacity: 0.3; z-index: -1; }
   .hero-photo-wrap::after { content: ''; position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); width: 80%; height: 50px; background: var(--accent); filter: blur(40px); opacity: 0.1; border-radius: 50%; }
@@ -195,14 +195,14 @@
     .hero-stats { gap: 2rem; flex-wrap: wrap; }
     .edu-grid { grid-template-columns: 1fr; }
     .hero-inner { flex-direction: column-reverse; gap: 2.5rem; }
-    .hero-photo { width: 220px; height: 260px; }
+    .hero-photo { width: 260px; height: 320px; }
   }
   @media (max-width: 600px) {
     .nav-links { display: none; }
     .hero h1 { font-size: 2.4rem; }
     .project-title { font-size: 1.4rem; }
     footer { flex-direction: column; gap: 0.5rem; }
-    .hero-photo { width: 180px; height: 220px; }
+    .hero-photo { width: 200px; height: 250px; }
   }
 </style>
 </head>
@@ -263,7 +263,7 @@
 <div class="marquee-wrap">
   <div class="marquee">
     <span class="marquee-item">Python <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> ETL Pipelines <span class="sep">&middot;</span> Hypothesis Testing <span class="sep">&middot;</span> Streamlit <span class="sep">&middot;</span> Feature Engineering <span class="sep">&middot;</span> Clustering</span>
-    <span class="marquee-item" aria-hidden="true">Python <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> ETL Pipelines <span class="sep">&middot;</span> Hypothesis Testing <span class="sep">&middot;</span> Streamlit <span class="sep">&middot;</span> Feature Engineering <span class="sep">&middot;</span> Clustering</span>
+    <span class="marquee-item" aria-hidden="true">Tableau <span class="sep">&middot;</span> Random Forest <span class="sep">&middot;</span> OpenAI <span class="sep">&middot;</span> Batch Inference <span class="sep">&middot;</span> Data Validation <span class="sep">&middot;</span> Hadoop <span class="sep">&middot;</span> Prompt Engineering <span class="sep">&middot;</span> LLM Evaluation <span class="sep">&middot;</span> Regression <span class="sep">&middot;</span> Git <span class="sep">&middot;</span> R <span class="sep">&middot;</span> Training Pipelines <span class="sep">&middot;</span> Uplift Analysis <span class="sep">&middot;</span> Time Series <span class="sep">&middot;</span> Healthcare ML <span class="sep">&middot;</span> NLP</span>
   </div>
 </div>
 
@@ -377,6 +377,9 @@
           </div>
         </div>
         <div class="project-tags"><span class="tag">XGBoost</span><span class="tag">Causal Inference</span><span class="tag">A/B Testing</span><span class="tag">Clustering</span><span class="tag">Uplift Analysis</span></div>
+        <div class="project-links">
+          <a href="https://github.com/yashraj10" target="_blank" class="project-link">GitHub &#8594;</a>
+        </div>
       </div>
       <div class="project-visual">
         <pre><span class="cm"># Churn timing + causal framework</span>
@@ -409,15 +412,15 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
         <div class="project-meta">
           <div class="project-meta-row">
             <span class="project-meta-label">Problem</span>
-            <span class="project-meta-value">Hospitals over- or under-staff ICUs because they lack reliable short-term bed occupancy forecasts.</span>
+            <span class="project-meta-value">Hospitals over- or under-staff ICUs because they lack reliable short-term bed occupancy forecasts, leading to capacity misallocation.</span>
           </div>
           <div class="project-meta-row">
             <span class="project-meta-label">Approach</span>
-            <span class="project-meta-value">Time-series forecasting pipeline with admission rate, discharge patterns, acuity scores, and seasonal features. 24-hour rolling prediction horizon.</span>
+            <span class="project-meta-value">24-hour rolling forecast using admission rates, scheduled discharges, patient acuity scores, and seasonal indices. Compared gradient boosting and time-series baselines.</span>
           </div>
           <div class="project-meta-row">
             <span class="project-meta-label">Result</span>
-            <span class="project-meta-value">Enables proactive staffing adjustments and bed allocation, reducing both over-capacity risk and idle resources.</span>
+            <span class="project-meta-value">Outperformed seasonal naive baseline; enables proactive staffing adjustments and bed allocation planning with 24h lead time.</span>
           </div>
         </div>
         <div class="project-tags"><span class="tag">Python</span><span class="tag">Time Series</span><span class="tag">Healthcare</span><span class="tag">Forecasting</span><span class="tag">ML Pipeline</span></div>
