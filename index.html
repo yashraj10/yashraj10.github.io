@@ -75,10 +75,8 @@
   .btn-primary:hover { background: #d4ff59; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(196,245,73,0.25); }
   .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
   .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-  .btn-resume { background: transparent; color: var(--text); border: 1px solid var(--accent); }
-  .btn-resume:hover { background: rgba(196,245,73,0.1); transform: translateY(-2px); }
 
-  .hero-photo-wrap { flex-shrink: 0; position: relative; animation: fadeInUp 0.8s ease-out 0.5s both; }
+  .hero-photo-wrap { flex-shrink: 0; position: relative; transform: translateY(-120px); }
   .hero-photo { width: 340px; height: 420px; object-fit: cover; object-position: center top; border-radius: 20px; border: 2px solid var(--border); display: block; filter: grayscale(20%); transition: all 0.5s; }
   .hero-photo:hover { filter: grayscale(0%); border-color: var(--accent); box-shadow: 0 20px 60px rgba(196,245,73,0.1); transform: translateY(-4px); }
   .hero-photo-wrap::before { content: ''; position: absolute; top: -8px; right: -8px; width: 100%; height: 100%; border: 1px solid var(--accent); border-radius: 20px; opacity: 0.3; z-index: -1; }
@@ -228,7 +226,6 @@
       <p class="hero-desc">Data Scientist with 2+ years of experience in ML pipelines, causal inference, and LLM applications. Currently pursuing MS in Business Analytics at USC Marshall.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">View Projects &#8595;</a>
-        <a href="resume.pdf" target="_blank" class="btn btn-resume">Download Resume &#8599;</a>
         <a href="https://www.linkedin.com/in/yashrajjadhav/" target="_blank" class="btn btn-outline">LinkedIn &#8594;</a>
       </div>
       <div class="hero-stats">
@@ -430,7 +427,7 @@
         </div>
         <div class="project-tags"><span class="tag">XGBoost</span><span class="tag">Causal Inference</span><span class="tag">A/B Testing</span><span class="tag">Clustering</span><span class="tag">Uplift Analysis</span></div>
         <div class="project-links">
-          <a href="https://github.com/yashraj10/churn-prediction-model" target="_blank" class="project-link">GitHub &#8594;</a>
+          <a href="https://github.com/yashraj10" target="_blank" class="project-link">GitHub &#8594;</a>
         </div>
       </div>
       <div class="project-visual">
@@ -599,7 +596,7 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
     <h2 class="section-title" style="margin-bottom:1rem">Let's connect</h2>
     <p class="contact-desc">Currently seeking full-time Data Science and ML roles starting May 2026. Always open to interesting conversations.</p>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#7f06151e1b171e093f121e0d0c171e1313510a0c1c511a1b0a" class="contact-link">&#9993; <span class="__cf_email__" data-cfemail="e79e8d86838f8691a78a8695948f868b8bc9929484c9828392">[email&#160;protected]</span></a>
+      <a id="email-link" class="contact-link">&#9993; <span id="email-text"></span></a>
       <a href="https://www.linkedin.com/in/yashrajjadhav/" target="_blank" class="contact-link">&#10230; LinkedIn</a>
       <a href="https://github.com/yashraj10" target="_blank" class="contact-link">&#10230; GitHub</a>
     </div>
@@ -611,7 +608,16 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
   <div class="footer-text">Los Angeles, CA</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+  // Build email dynamically to bypass GitHub Pages email obfuscation
+  var u = 'yjadhav'; var d = 'marshall.usc.edu';
+  var emailEl = document.getElementById('email-link');
+  var emailText = document.getElementById('email-text');
+  if (emailEl && emailText) {
+    emailEl.href = 'mai' + 'lto:' + u + '@' + d;
+    emailText.textContent = u + '@' + d;
+  }
+
   var observer = new IntersectionObserver(function(entries) {
     for (var i = 0; i < entries.length; i++) {
       if (entries[i].isIntersecting) {
