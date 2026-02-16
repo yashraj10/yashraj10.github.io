@@ -262,8 +262,8 @@
 
 <div class="marquee-wrap">
   <div class="marquee">
-    <span class="marquee-item">Python <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> ETL Pipelines <span class="sep">&middot;</span> Hypothesis Testing <span class="sep">&middot;</span> Streamlit <span class="sep">&middot;</span> Feature Engineering <span class="sep">&middot;</span> Clustering</span>
-    <span class="marquee-item" aria-hidden="true">Tableau <span class="sep">&middot;</span> Random Forest <span class="sep">&middot;</span> OpenAI <span class="sep">&middot;</span> Batch Inference <span class="sep">&middot;</span> Data Validation <span class="sep">&middot;</span> Hadoop <span class="sep">&middot;</span> Prompt Engineering <span class="sep">&middot;</span> LLM Evaluation <span class="sep">&middot;</span> Regression <span class="sep">&middot;</span> Git <span class="sep">&middot;</span> R <span class="sep">&middot;</span> Training Pipelines <span class="sep">&middot;</span> Uplift Analysis <span class="sep">&middot;</span> Time Series <span class="sep">&middot;</span> Healthcare ML <span class="sep">&middot;</span> NLP</span>
+    <span class="marquee-item">Python <span class="sep">&middot;</span> PyTorch <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> ETL Pipelines <span class="sep">&middot;</span> Streamlit <span class="sep">&middot;</span> Transformers <span class="sep">&middot;</span> Clustering</span>
+    <span class="marquee-item" aria-hidden="true">Deep Learning <span class="sep">&middot;</span> Tableau <span class="sep">&middot;</span> Random Forest <span class="sep">&middot;</span> OpenAI <span class="sep">&middot;</span> Batch Inference <span class="sep">&middot;</span> Attention Mechanisms <span class="sep">&middot;</span> Hadoop <span class="sep">&middot;</span> Prompt Engineering <span class="sep">&middot;</span> Sequence Modeling <span class="sep">&middot;</span> Git <span class="sep">&middot;</span> R <span class="sep">&middot;</span> Training Pipelines <span class="sep">&middot;</span> Uplift Analysis <span class="sep">&middot;</span> Time Series <span class="sep">&middot;</span> Healthcare ML</span>
   </div>
 </div>
 
@@ -275,10 +275,62 @@
   </div>
   <div class="projects-grid">
 
-    <!-- PROJECT 01: AI Repo Co-Pilot -->
+    <!-- PROJECT 01: Rage Quit Predictor -->
     <div class="project-card reveal">
       <div class="project-info">
-        <div class="project-number">01 &mdash; AI AGENT</div>
+        <div class="project-number">01 &mdash; DEEP LEARNING</div>
+        <h3 class="project-title">Rage Quit Predictor</h3>
+        <div class="project-meta">
+          <div class="project-meta-row">
+            <span class="project-meta-label">Problem</span>
+            <span class="project-meta-value">Predicting player churn from behavioral sequences, not just aggregated stats. Event ordering matters &mdash; a death streak followed by action drought is a different signal than the same events spread across 20 minutes.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Approach</span>
+            <span class="project-meta-value">Custom PyTorch transformer with game-time positional encoding, dual embedding (discrete event tokens + continuous features), and [CLS] pooling. Trained on 50K+ matches from OpenDota API.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">Result</span>
+            <span class="project-meta-value">AUC-ROC 0.84, AUC-PR 0.43, Precision@100 0.58 &mdash; outperforming LogReg, XGBoost, and LSTM baselines. Attention heatmaps confirm interpretable focus on death streaks and action droughts.</span>
+          </div>
+        </div>
+        <div class="project-tags"><span class="tag">PyTorch</span><span class="tag">Transformer</span><span class="tag">Attention</span><span class="tag">Sequence Modeling</span><span class="tag">Streamlit</span><span class="tag">Behavioral Analytics</span></div>
+        <div class="project-links">
+          <a href="https://github.com/yashraj10/rage-quit-predictor" target="_blank" class="project-link">GitHub &#8594;</a>
+          <a href="https://rage-quit-predictor.streamlit.app" target="_blank" class="project-link">Live Demo &#8599;</a>
+        </div>
+      </div>
+      <div class="project-visual">
+        <pre><span class="cm"># Custom transformer architecture</span>
+
+<span class="kw">class</span> RageQuitTransformer:
+  <span class="cm"># 22 behavioral event tokens</span>
+  <span class="cm"># KILL, DEATH, DEATH_STREAK,</span>
+  <span class="cm"># ACTION_DROUGHT, GOLD_SPIKE_DOWN...</span>
+
+  encoder = TransformerEncoder(
+    layers=<span class="num">4</span>, heads=<span class="num">4</span>
+  )
+
+  <span class="cm"># game-time positional encoding</span>
+  <span class="cm"># (actual minute, not seq index)</span>
+  pos = GameTimeEncoding(dim=<span class="num">64</span>)
+
+  <span class="cm"># dual embedding fusion</span>
+  embed = TokenEmbed + FeatureProject
+    <span class="cm"># gold_diff, xp_diff, kda</span>
+
+  <span class="cm"># [CLS] &rarr; P(rage_quit)</span>
+  <span class="kw">AUC-ROC</span>: <span class="num">0.84</span>
+  <span class="kw">AUC-PR</span>:  <span class="num">0.43</span>
+  <span class="kw">P@100</span>:   <span class="num">0.58</span></pre>
+      </div>
+    </div>
+
+    <!-- PROJECT 02: AI Repo Co-Pilot -->
+    <div class="project-card reveal">
+      <div class="project-info">
+        <div class="project-number">02 &mdash; AI AGENT</div>
         <h3 class="project-title">AI Repo Co-Pilot</h3>
         <div class="project-meta">
           <div class="project-meta-row">
@@ -323,7 +375,7 @@
     <!-- PROJECT 02: Retention RAG -->
     <div class="project-card reveal">
       <div class="project-info">
-        <div class="project-number">02 &mdash; LLM SYSTEM</div>
+        <div class="project-number">03 &mdash; LLM SYSTEM</div>
         <h3 class="project-title">Retention Decision Twin</h3>
         <div class="project-meta">
           <div class="project-meta-row">
@@ -360,7 +412,7 @@
     <!-- PROJECT 03: Churn Timing -->
     <div class="project-card reveal">
       <div class="project-info">
-        <div class="project-number">03 &mdash; CAUSAL ML</div>
+        <div class="project-number">04 &mdash; CAUSAL ML</div>
         <h3 class="project-title">Churn Timing &amp; Notification Impact</h3>
         <div class="project-meta">
           <div class="project-meta-row">
@@ -404,10 +456,10 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
       </div>
     </div>
 
-    <!-- PROJECT 04: ICU Census — tightened -->
+    <!-- PROJECT 05: ICU Census -->
     <div class="project-card reveal">
       <div class="project-info">
-        <div class="project-number">04 &mdash; HEALTHCARE ML</div>
+        <div class="project-number">05 &mdash; HEALTHCARE ML</div>
         <h3 class="project-title">ICU Census Prediction</h3>
         <div class="project-meta">
           <div class="project-meta-row">
@@ -513,7 +565,7 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
     <div class="skill-group">
       <div class="skill-group-icon">&#129302;</div>
       <div class="skill-group-title">LLM &amp; AI</div>
-      <div class="skill-pills"><span class="skill-pill">LangGraph</span><span class="skill-pill">RAG</span><span class="skill-pill">Gemini</span><span class="skill-pill">ChromaDB</span><span class="skill-pill">Prompt Engineering</span><span class="skill-pill">LLM Evaluation</span></div>
+      <div class="skill-pills"><span class="skill-pill">PyTorch</span><span class="skill-pill">Transformers</span><span class="skill-pill">LangGraph</span><span class="skill-pill">RAG</span><span class="skill-pill">Gemini</span><span class="skill-pill">ChromaDB</span><span class="skill-pill">Prompt Engineering</span><span class="skill-pill">LLM Evaluation</span></div>
     </div>
   </div>
 </section>
@@ -547,7 +599,7 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
     <h2 class="section-title" style="margin-bottom:1rem">Let's connect</h2>
     <p class="contact-desc">Currently seeking full-time Data Science and ML roles starting May 2026. Always open to interesting conversations.</p>
     <div class="contact-links">
-      <a href="mailto:yjadhav@marshall.usc.edu" class="contact-link">&#9993; yjadhav@marshall.usc.edu</a>
+      <a href="/cdn-cgi/l/email-protection#7f06151e1b171e093f121e0d0c171e1313510a0c1c511a1b0a" class="contact-link">&#9993; <span class="__cf_email__" data-cfemail="e79e8d86838f8691a78a8695948f868b8bc9929484c9828392">[email&#160;protected]</span></a>
       <a href="https://www.linkedin.com/in/yashrajjadhav/" target="_blank" class="contact-link">&#10230; LinkedIn</a>
       <a href="https://github.com/yashraj10" target="_blank" class="contact-link">&#10230; GitHub</a>
     </div>
@@ -559,7 +611,7 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
   <div class="footer-text">Los Angeles, CA</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   var observer = new IntersectionObserver(function(entries) {
     for (var i = 0; i < entries.length; i++) {
       if (entries[i].isIntersecting) {
