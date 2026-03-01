@@ -182,27 +182,26 @@
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.4,0,0.2,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* FOCUS STATES */
   a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
   @media (max-width: 900px) {
-    .hero-inner { flex-direction: column; gap: 2.5rem; }
-    
     nav { padding: 1rem 1.5rem; }
     section { padding: 4rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-inner { flex-direction: column; gap: 1.5rem; align-items: center; text-align: center; }
+    .hero-photo-wrap { display: none; }
+    .hero-actions { justify-content: center; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; justify-content: center; }
     .project-card { grid-template-columns: 1fr; gap: 1.5rem; }
-    .hero-stats { gap: 2rem; flex-wrap: wrap; }
     .edu-grid { grid-template-columns: 1fr; }
-    .hero-inner { flex-direction: column-reverse; gap: 2.5rem; }
-    .hero-photo { width: 260px; height: 320px; }
   }
+
   @media (max-width: 600px) {
     .nav-links { display: none; }
     .hero h1 { font-size: 2.4rem; }
     .project-title { font-size: 1.4rem; }
     footer { flex-direction: column; gap: 0.5rem; }
-    .hero-photo { width: 200px; height: 250px; }
+    .hero-photo { width: 150px; height: 180px; }
   }
 </style>
 </head>
@@ -259,10 +258,11 @@
   </div>
 </section>
 
+<!-- MARQUEE — updated with MLOps skills -->
 <div class="marquee-wrap">
   <div class="marquee">
-    <span class="marquee-item">Python <span class="sep">&middot;</span> PyTorch <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> ETL Pipelines <span class="sep">&middot;</span> Streamlit <span class="sep">&middot;</span> Transformers <span class="sep">&middot;</span> Clustering</span>
-    <span class="marquee-item" aria-hidden="true">Deep Learning <span class="sep">&middot;</span> Tableau <span class="sep">&middot;</span> Random Forest <span class="sep">&middot;</span> OpenAI <span class="sep">&middot;</span> Batch Inference <span class="sep">&middot;</span> Attention Mechanisms <span class="sep">&middot;</span> Hadoop <span class="sep">&middot;</span> Prompt Engineering <span class="sep">&middot;</span> Sequence Modeling <span class="sep">&middot;</span> Git <span class="sep">&middot;</span> R <span class="sep">&middot;</span> Training Pipelines <span class="sep">&middot;</span> Uplift Analysis <span class="sep">&middot;</span> Time Series <span class="sep">&middot;</span> Healthcare ML</span>
+    <span class="marquee-item">Python <span class="sep">&middot;</span> PyTorch <span class="sep">&middot;</span> XGBoost <span class="sep">&middot;</span> MLflow <span class="sep">&middot;</span> Apache Kafka <span class="sep">&middot;</span> AWS S3 <span class="sep">&middot;</span> LangGraph <span class="sep">&middot;</span> RAG <span class="sep">&middot;</span> Causal Inference <span class="sep">&middot;</span> A/B Testing <span class="sep">&middot;</span> SQL <span class="sep">&middot;</span> Power BI <span class="sep">&middot;</span> ChromaDB <span class="sep">&middot;</span> Gemini <span class="sep">&middot;</span> scikit-learn <span class="sep">&middot;</span> Streamlit <span class="sep">&middot;</span> Transformers</span>
+    <span class="marquee-item" aria-hidden="true">Deep Learning <span class="sep">&middot;</span> PSI Drift Monitoring <span class="sep">&middot;</span> Mixed Precision AMP <span class="sep">&middot;</span> Model Registry <span class="sep">&middot;</span> Attention Mechanisms <span class="sep">&middot;</span> Sequence Modeling <span class="sep">&middot;</span> Tableau <span class="sep">&middot;</span> OpenAI <span class="sep">&middot;</span> Batch Inference <span class="sep">&middot;</span> Prompt Engineering <span class="sep">&middot;</span> Git <span class="sep">&middot;</span> R <span class="sep">&middot;</span> Time Series <span class="sep">&middot;</span> Healthcare ML</span>
   </div>
 </div>
 
@@ -274,55 +274,71 @@
   </div>
   <div class="projects-grid">
 
-    <!-- PROJECT 01: Rage Quit Predictor -->
+    <!-- PROJECT 01: Rage Quit Predictor — UPDATED with real metrics + MLOps -->
     <div class="project-card reveal">
       <div class="project-info">
-        <div class="project-number">01 &mdash; DEEP LEARNING</div>
+        <div class="project-number">01 &mdash; DEEP LEARNING + MLOPS</div>
         <h3 class="project-title">Rage Quit Predictor</h3>
         <div class="project-meta">
           <div class="project-meta-row">
             <span class="project-meta-label">Problem</span>
-            <span class="project-meta-value">Predicting player churn from behavioral sequences, not just aggregated stats. Event ordering matters &mdash; a death streak followed by action drought is a different signal than the same events spread across 20 minutes.</span>
+            <span class="project-meta-value">Predict player disengagement from behavioral event sequences before it happens &mdash; a user retention problem that maps directly to Spotify, Uber, and Airbnb. Event ordering matters: a death streak followed by action drought is a different signal than the same events spread across 20 minutes.</span>
           </div>
           <div class="project-meta-row">
-            <span class="project-meta-label">Approach</span>
-            <span class="project-meta-value">Custom PyTorch transformer with game-time positional encoding, dual embedding (discrete event tokens + continuous features), and [CLS] pooling. Trained on 50K+ matches from OpenDota API.</span>
+            <span class="project-meta-label">Model</span>
+            <span class="project-meta-value">Custom PyTorch transformer (849K params) with 22-token behavioral vocabulary, game-time positional encoding, and dual embedding (discrete events + continuous features). Trained on 20,000 matches from OpenDota API. Outperforms LogReg, XGBoost, and LSTM baselines on AUC-PR.</span>
+          </div>
+          <div class="project-meta-row">
+            <span class="project-meta-label">MLOps</span>
+            <span class="project-meta-value">Full production layer: MLflow experiment tracking + model registry (v1&rarr;Production), 2.47x training speedup via torch.cuda.amp, AWS S3 4-tier data lake, Apache Kafka event streaming (4 partitions), PSI drift monitoring across 5 behavioral features.</span>
           </div>
           <div class="project-meta-row">
             <span class="project-meta-label">Result</span>
-            <span class="project-meta-value">AUC-ROC 0.84, AUC-PR 0.43, Precision@100 0.58 &mdash; outperforming LogReg, XGBoost, and LSTM baselines. Attention heatmaps confirm interpretable focus on death streaks and action droughts.</span>
+            <span class="project-meta-value">AUC-PR 0.269 (primary metric &mdash; correct for 0.61% positive rate), AUC-ROC 0.928, F1 0.422, Recall 0.454. Attention heatmaps confirm interpretable focus on death streaks and action droughts.</span>
           </div>
         </div>
-        <div class="project-tags"><span class="tag">PyTorch</span><span class="tag">Transformer</span><span class="tag">Attention</span><span class="tag">Sequence Modeling</span><span class="tag">Streamlit</span><span class="tag">Behavioral Analytics</span></div>
+        <div class="project-tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">Transformer</span>
+          <span class="tag">MLflow</span>
+          <span class="tag">Apache Kafka</span>
+          <span class="tag">AWS S3</span>
+          <span class="tag">PSI Drift</span>
+          <span class="tag">AMP</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Behavioral Analytics</span>
+        </div>
         <div class="project-links">
           <a href="https://github.com/yashraj10/rage-quit-predictor" target="_blank" class="project-link">GitHub &#8594;</a>
           <a href="https://rage-quit-predictor.streamlit.app" target="_blank" class="project-link">Live Demo &#8599;</a>
         </div>
       </div>
       <div class="project-visual">
-        <pre><span class="cm"># Custom transformer architecture</span>
+        <pre><span class="cm"># Custom transformer + MLOps layer</span>
 
 <span class="kw">class</span> RageQuitTransformer:
-  <span class="cm"># 22 behavioral event tokens</span>
+  <span class="cm"># 22 behavioral tokens</span>
   <span class="cm"># KILL, DEATH, DEATH_STREAK,</span>
-  <span class="cm"># ACTION_DROUGHT, GOLD_SPIKE_DOWN...</span>
+  <span class="cm"># ACTION_DROUGHT, XP_FALLING_BEHIND</span>
 
   encoder = TransformerEncoder(
-    layers=<span class="num">4</span>, heads=<span class="num">4</span>
-  )
+    layers=<span class="num">4</span>, heads=<span class="num">4</span>, dim=<span class="num">128</span>
+  )  <span class="cm"># 849K parameters</span>
 
   <span class="cm"># game-time positional encoding</span>
-  <span class="cm"># (actual minute, not seq index)</span>
-  pos = GameTimeEncoding(dim=<span class="num">64</span>)
+  pos = GameTimeEncoding(max_min=<span class="num">90</span>)
 
-  <span class="cm"># dual embedding fusion</span>
-  embed = TokenEmbed + FeatureProject
-    <span class="cm"># gold_diff, xp_diff, kda</span>
+  <span class="cm"># MLOps layer</span>
+  <span class="kw">mlflow</span>: RageQuitTransformer v<span class="num">1</span>&#8594;Prod
+  <span class="kw">kafka</span>:  match-events · <span class="num">4</span> partitions
+  <span class="kw">s3</span>:     <span class="num">4</span>-tier data lake · <span class="num">10</span>MB model
+  <span class="kw">psi</span>:    <span class="num">5</span> features · drift &gt;<span class="num">0.2</span>=FAIL
+  <span class="kw">amp</span>:    <span class="num">2.47</span>x speedup · <span class="num">32</span>ms/step
 
-  <span class="cm"># [CLS] &rarr; P(rage_quit)</span>
-  <span class="kw">AUC-ROC</span>: <span class="num">0.84</span>
-  <span class="kw">AUC-PR</span>:  <span class="num">0.43</span>
-  <span class="kw">P@100</span>:   <span class="num">0.58</span></pre>
+  <span class="cm"># test set: 30,020 seqs, 183 pos</span>
+  <span class="kw">AUC-PR</span>:   <span class="num">0.269</span>  <span class="cm"># primary metric</span>
+  <span class="kw">AUC-ROC</span>: <span class="num">0.928</span>
+  <span class="kw">Recall</span>:   <span class="num">0.454</span></pre>
       </div>
     </div>
 
@@ -371,7 +387,7 @@
       </div>
     </div>
 
-    <!-- PROJECT 02: Retention RAG -->
+    <!-- PROJECT 03: Retention RAG -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">03 &mdash; LLM SYSTEM</div>
@@ -408,7 +424,7 @@
       </div>
     </div>
 
-    <!-- PROJECT 03: Churn Timing -->
+    <!-- PROJECT 04: Churn Timing -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">04 &mdash; CAUSAL ML</div>
@@ -478,7 +494,6 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
         <div class="project-links">
           <a href="https://github.com/yashraj10/ICU-Census-Prediction" target="_blank" class="project-link">GitHub &#8594;</a>
           <a href="https://yashraj10.github.io/ICU-Census-Prediction/" target="_blank" class="project-link">Live Demo &#8599;</a>
-
         </div>
       </div>
       <div class="project-visual">
@@ -541,7 +556,7 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- SKILLS — updated with MLOps group -->
 <section id="skills">
   <div class="section-header reveal">
     <div class="section-label">// Toolkit</div>
@@ -560,8 +575,8 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
     </div>
     <div class="skill-group">
       <div class="skill-group-icon">&#128295;</div>
-      <div class="skill-group-title">Data &amp; ML Systems</div>
-      <div class="skill-pills"><span class="skill-pill">Training Pipelines</span><span class="skill-pill">Batch Inference</span><span class="skill-pill">ETL Pipelines</span><span class="skill-pill">Feature Engineering</span><span class="skill-pill">Data Validation</span></div>
+      <div class="skill-group-title">MLOps &amp; Infrastructure</div>
+      <div class="skill-pills"><span class="skill-pill">MLflow</span><span class="skill-pill">Apache Kafka</span><span class="skill-pill">AWS S3</span><span class="skill-pill">PSI Drift Monitoring</span><span class="skill-pill">Mixed Precision AMP</span><span class="skill-pill">Model Registry</span><span class="skill-pill">Training Pipelines</span><span class="skill-pill">Batch Inference</span><span class="skill-pill">ETL Pipelines</span></div>
     </div>
     <div class="skill-group">
       <div class="skill-group-icon">&#129302;</div>
@@ -613,7 +628,6 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
 </footer>
 
 <script>
-  // Build email dynamically to bypass GitHub Pages email obfuscation
   var u = 'yjadhav'; var d = 'marshall.usc.edu';
   var emailEl = document.getElementById('email-link');
   var emailText = document.getElementById('email-text');
