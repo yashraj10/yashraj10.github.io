@@ -41,10 +41,6 @@
     background: var(--accent); transition: width 0.3s; }
   .nav-links a:hover { color: var(--accent); }
   .nav-links a:hover::after { width: 100%; }
-  /* .nav-resume { color: var(--accent) !important; border: 1px solid var(--accent);
-    padding: 0.35rem 0.9rem !important; border-radius: 100px; letter-spacing: 0.04em !important; transition: all 0.3s !important; }
-  .nav-resume:hover { background: rgba(196,245,73,0.1) !important; }
-  .nav-resume::after { display: none !important; } */
   .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 3rem 4rem; position: relative; overflow: hidden; }
   .hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; filter: blur(150px); opacity: 0.12; pointer-events: none; }
   .hero-glow-1 { top: -100px; right: -100px; background: var(--gradient-1); }
@@ -170,8 +166,6 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
-    <!-- ⚠️ REPLACE: YOUR_GOOGLE_DRIVE_RESUME_LINK -->
-    <!-- <li><a href="YOUR_GOOGLE_DRIVE_RESUME_LINK" target="_blank" class="nav-resume">Resume &#8595;</a></li> -->
   </ul>
 </nav>
 
@@ -279,7 +273,7 @@
       </div>
     </div>
 
-    <!-- 02: Movie Recommender Pipeline (NEW) -->
+    <!-- 02: Movie Recommender Pipeline -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">02 &mdash; ML ENGINEERING + RECSYS</div>
@@ -323,7 +317,7 @@ model = <span class="kw">NeuralCF</span>(
       </div>
     </div>
 
-    <!-- 03: AI Repo Co-Pilot (renumbered from 02) -->
+    <!-- 03: AI Repo Co-Pilot -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">03 &mdash; AI AGENT</div>
@@ -362,7 +356,7 @@ model = <span class="kw">NeuralCF</span>(
       </div>
     </div>
 
-    <!-- 04: Retention RAG (renumbered from 03) -->
+    <!-- 04: Retention RAG -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">04 &mdash; LLM SYSTEM</div>
@@ -393,7 +387,7 @@ model = <span class="kw">NeuralCF</span>(
       </div>
     </div>
 
-    <!-- 05: Churn Timing (renumbered from 04, fixed GitHub link) -->
+    <!-- 05: Churn Timing -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">05 &mdash; CAUSAL ML</div>
@@ -433,7 +427,7 @@ lift_7d = <span class="num">2.25</span>  <span class="cm"># responsive cohort</s
       </div>
     </div>
 
-    <!-- 06: ICU Census (renumbered from 05, full rewrite) -->
+    <!-- 06: ICU Census -->
     <div class="project-card reveal">
       <div class="project-info">
         <div class="project-number">06 &mdash; PRODUCTION ML</div>
@@ -486,6 +480,15 @@ census_t1 = (census_t0
     <h2 class="section-title">Experience</h2>
   </div>
   <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-date">MARCH 2026 &mdash; PRESENT</div>
+      <div class="timeline-role">AI Engineer Intern</div>
+      <div class="timeline-company">GrantAide &middot; Remote</div>
+      <ul class="timeline-highlights">
+        <li>Built Analytical Scout Agent with PDF extraction (PyPDF2/pdfplumber) and keyword-based filtering for grant analytical questions; validated with 29-assertion test suite across 5 edge-case files and 3 real grant sources</li>
+        <li>Evaluated 6 vector databases for RAG migration from FAISS; recommended AlloyDB with pgvector + ScaNN on GCP; configured LangChain PGVector integration with vector(768) schema for semantic search</li>
+      </ul>
+    </div>
     <div class="timeline-item">
       <div class="timeline-date">JULY 2022 &mdash; AUGUST 2024</div>
       <div class="timeline-role">Data Scientist</div>
@@ -549,9 +552,10 @@ census_t1 = (census_t0
       <div class="skill-group-icon">&#129302;</div>
       <div class="skill-group-title">LLM &amp; AI</div>
       <div class="skill-pills">
-        <span class="skill-pill">LangGraph</span><span class="skill-pill">RAG</span>
+        <span class="skill-pill">LangGraph</span><span class="skill-pill">LangChain</span><span class="skill-pill">RAG</span>
         <span class="skill-pill">Gemini API</span><span class="skill-pill">OpenAI API (GPT-4o-mini)</span>
-        <span class="skill-pill">ChromaDB</span><span class="skill-pill">Prompt Engineering</span>
+        <span class="skill-pill">Google ADK</span><span class="skill-pill">ChromaDB</span>
+        <span class="skill-pill">Vector Databases</span><span class="skill-pill">Prompt Engineering</span>
         <span class="skill-pill">LLM Evaluation</span>
       </div>
     </div>
